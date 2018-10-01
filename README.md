@@ -1,36 +1,44 @@
 #include <stdio.h>
-int main (void) 
+
+int main()
 {
-  int gal;
-  float miles;
-  float mpg;
-  float avgmpg;
-  int totalgal = 0;
-  float totalmiles = 0;
-  
-  printf("Please enter the # of gallons (type -1 to end)\n");
-  scanf("%d", &gal);
-  while( gal != 1 ){
-    
-    printf("Please enter the # of miles driven\n");
-      scanf("%.2f", &miles);
-      
-      mpg = miles/gal;
-      totalgal = totalgal + gal;
-      totalmile = totalmile + miles;
-      
-      printf("Your mpg is %.2f_\n", mpg)
-      
-      printf("Please enter the # of gallons (type -1 to end) \n");
-      scanf("%d", &gal);
-      }
-      avgmpg = totalmiles/totalgal;
-      
-      printf("Your avgmpg is %.2f_\n");
-      
-      exit 0;
-}      
-      
+    float gals, totgals = 0, miles, totmiles = 0;
+
+    printf("Enter the gallons used (-1 to end): ");
+    scanf("%f", &gals);
+
+    while (gals == 0) {
+	printf("Gallons can't be 0!\n");
+	printf("Enter the gallons used (-1 to end): ");
+	scanf("%f", &gals);
+    }
+
+    while (gals != -1) {
+
+	printf("Enter the miles driven: ");
+	scanf("%f", &miles);
+	printf("The miles/gallons for this tank was %f\n\n", miles / gals);
+
+	totgals += gals;
+	totmiles += miles;
+
+	printf("Enter the gallons used (-1 to end): ");
+	scanf("%f", &gals);
+
+	while (gals == 0) {
+	    printf("Gallons can't be 0!\n");
+	    printf("Enter the gallons used (-1 to end): ");
+	    scanf("%f", &gals);
+	}
+
+
+    }
+
+    printf("\nThe overall average miles/gallon was %f\n",
+	   totmiles / totgals);
+
+    return 0;
+}
       
     
   
